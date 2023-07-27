@@ -1,24 +1,23 @@
-# README
+初回のみ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+$ git init
 
-Things you may want to cover:
+$ git add .
 
-* Ruby version
+$ git commit "initial commit"
 
-* System dependencies
+$ git remote add origin 上記手順で作成したGitHubリポジトリのURL
 
-* Configuration
+$ git push origin main
 
-* Database creation
+初回のみDB作成 $ docker-compose up
 
-* Database initialization
+$ docker-compose exec web bash
 
-* How to run the test suite
+$ bin/rails db:create
 
-* Services (job queues, cache servers, search engines, etc.)
+docker-compose run --rm web bundle
 
-* Deployment instructions
+docker-compose build
 
-* ...
+docker compose up
