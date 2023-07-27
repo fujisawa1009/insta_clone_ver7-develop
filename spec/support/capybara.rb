@@ -7,6 +7,7 @@ options.add_argument('--no-sandbox')
 options.add_argument('--window-size=1680,1050')
 options.add_argument('--disable-gpu')
 options.add_argument('--disable-dev-shm-usage')
+options.add_argument('--lang=ja')
 
 if ENV['SELENIUM_DRIVER_URL']
   Capybara.register_driver :remote_chrome do |app|
@@ -35,7 +36,7 @@ end
 Capybara.javascript_driver = ENV['SELENIUM_DRIVER_URL'] ? :remote_chrome : :selenium_chrome_headless
 
 RSpec.configure do |config|
-  config.before(:each, type: :system) do |_example|
+  config.before(:each, type: :system) do
     driven_by Capybara.javascript_driver
   end
 end
