@@ -1,0 +1,19 @@
+<div style="height: calc(100vh - 58.59px); min-height: 400px;" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-xl-5 col-md-8">
+        <%= form_with url: login_path, class: 'bg-white  rounded-5 shadow-5-strong p-5' do |f| %>
+          <div class="form-outline mb-4">
+            <%= f.email_field :email, class: 'form-control' %>
+            <%= f.label :email, User.human_attribute_name(:email), class: 'form-label' %>
+          </div>
+          <div class="form-outline mb-4">
+            <%= f.password_field :password, class: 'form-control' %>
+            <%= f.label :password, User.human_attribute_name(:password), class: 'form-label' %>
+          </div>
+          <%= f.submit 'ログイン', class: 'btn btn-primary btn-block' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
