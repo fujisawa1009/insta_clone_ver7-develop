@@ -35,3 +35,6 @@ rubocop -a
 #改修メモ
 Gem を追加したので bundle install を実行してください
 カラムを追加したので bin/rails db:migrate を実行してください
+
+docker-compose  run --rm web bundle
+docker-compose run web bundle exec rake db:migrate
