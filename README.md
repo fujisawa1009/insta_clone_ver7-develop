@@ -32,3 +32,6 @@ spec/spec_helper.rb
 # rubocopメモ
 rubocop -a
 
+#改修メモ
+Gem を追加したので bundle install を実行してください
+カラムを追加したので bin/rails db:migrate を実行してください
