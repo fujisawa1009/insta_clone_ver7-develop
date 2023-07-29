@@ -61,7 +61,7 @@ group :development, :test do
 end
 
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'erb_lint', require: false
   gem 'rubocop'
   gem 'rubocop-rails', require: false
   gem 'web-console'
