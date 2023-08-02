@@ -15,12 +15,8 @@
 #  index_users_on_email     (email) UNIQUE
 #  index_users_on_username  (username) UNIQUE
 #
-class User < ApplicationRecord
-  authenticates_with_sorcery!
+require 'rails_helper'
 
-  validates :username, uniqueness: true, presence: true
-  validates :email, uniqueness: true, presence: true
-  validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
-  validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
-  validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+RSpec.describe User, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end
