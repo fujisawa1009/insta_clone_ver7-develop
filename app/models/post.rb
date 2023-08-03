@@ -19,4 +19,6 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many_attached :images
+  validates :body, presence: true
+  validates :images, presence: true
 end
