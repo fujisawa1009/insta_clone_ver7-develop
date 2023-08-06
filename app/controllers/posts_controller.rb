@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  #未ログイン時は新規投稿や編集ができないような制御
+  before_action :require_login, only: %i[new create edit update destroy]
   def index
     @posts = Post.with_attached_images.includes(:user).order(created_at: :desc)
   end
