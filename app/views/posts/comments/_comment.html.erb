@@ -1,0 +1,30 @@
+<%= turbo_frame_tag dom_id comment do %>
+  <div class="d-flex gap-3">
+    <%= image_tag 'http://placehold.jp/40x40.png',
+                  class: 'rounded-circle',
+                  width: 40,
+                  height: 40 %>
+    <div class="w-100">
+      <span class="font-weight-bold"><%= comment.user.username %></span>
+      <%= simple_format(comment.body) %>
+      <p class="card-text text-end">
+        <small class="text-muted"><%= l comment.created_at, format: :long %></small>
+      </p>
+      <% if current_user && current_user.owner?(comment) %>
+        <div class="text-end">
+          <span class="me-2">
+            <%= link_to edit_post_comment_path(comment.post, comment), class: 'btn btn-floating btn-success btn-sm btn-edit' do %>
+              <i class="far fa-edit"></i>
+            <% end %>
+          </span>
+          <span>
+            <%= link_to post_comment_path(comment.post, comment), class: 'btn btn-floating btn-danger btn-sm btn-delete', data: { turbo_method: :delete, turbo_confirm: '削除します' } do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <hr>
+<% end %>
