@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="header" class="navbar navbar-expand-lg navbar-light bg-light">
   <!-- Container wrapper -->
   <div class="container">
     <!-- Navbar brand -->
@@ -24,22 +24,56 @@
       <!-- Left links -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" href="#">Dashboard</a>
+          <%= link_to '投稿一覧', posts_path, class: 'nav-link' %>
         </li>
       </ul>
       <!-- Left links -->
 
       <div class="d-flex align-items-center">
-        <button type="button" class="btn btn-link px-3 me-2">
-          Login
-        </button>
-        <button type="button" class="btn btn-primary me-3">
-          Sign up for free
-        </button>
-        <a
-          class="btn btn-dark px-3"
-          href="https://github.com/mdbootstrap/mdb-ui-kit"
-          role="button"><i class="fab fa-github"></i></a>
+        <% unless logged_in? %>
+          <%= link_to 'ログイン', login_path, class: 'btn btn-link px-3 me-2' %>
+          <%= link_to 'サインアップ', signup_path, class: 'btn btn-primary me-3' %>
+        <% end %>
+
+        <% if logged_in? %>
+          <%= link_to new_post_path, class: 'btn btn-primary btn-sm me-3' do %>
+            <i class="fas fa-camera me-2"></i>
+            投稿
+          <% end %>
+          <!-- Avatar -->
+          <div id="header-avatar-dropdown" class="dropdown">
+            <a
+              class="dropdown-toggle d-flex align-items-center hidden-arrow"
+              href="#"
+              id="navbarDropdownMenuAvatar"
+              role="button"
+              data-mdb-toggle="dropdown"
+              aria-expanded="false">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                class="rounded-circle"
+                height="25"
+                alt="Black and White Portrait of a Man"
+                loading="lazy">
+            </a>
+            <ul
+              class="dropdown-menu dropdown-menu-end"
+              aria-labelledby="navbarDropdownMenuAvatar">
+              <li>
+                <a class="dropdown-item" href="#">My profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">Settings</a>
+              </li>
+              <li>
+                <%= link_to 'ログアウト',
+                            logout_path,
+                            class: 'dropdown-item',
+                            data: { turbo_method: :delete, turbo_confirm: 'ログアウトします' } %>
+              </li>
+            </ul>
+          </div>
+        <% end %>
       </div>
     </div>
     <!-- Collapsible wrapper -->

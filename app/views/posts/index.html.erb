@@ -1,0 +1,13 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col-12">
+      <%= render @posts %>
+    </div>
+  </div>
+</div>
+
+<div class="position-fixed" style="right: 40px; bottom: 40px;">
+  <%= link_to new_post_path, class: 'btn btn-floating btn-primary btn-lg' do %>
+    <i class="fas fa-pencil-alt"></i>
+  <% end %>
+</div>

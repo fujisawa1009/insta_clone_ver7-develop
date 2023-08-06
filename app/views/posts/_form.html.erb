@@ -1,0 +1,21 @@
+<%= form_with model: post do |f| %>
+  <%= render 'shared/error_messages', object: post %>
+  <div class="mb-4">
+    <%= f.label :body, class: 'form-label' %>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+  <div class="mb-4">
+    <% if post.new_record? %>
+      <%= f.label :images, class: 'form-label' %>
+      <%= f.file_field :images, class: 'form-control', multiple: true, accept: 'image/*' %>
+    <% end %>
+    <% if post.persisted? %>
+      <div class="d-flex align-items-center mt-3">
+        <% post.images.each do |image| %>
+          <%= image_tag image, width: '100px' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

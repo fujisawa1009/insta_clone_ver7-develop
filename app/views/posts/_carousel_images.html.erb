@@ -1,0 +1,34 @@
+<div class="bg-image hover-overlay ripple post-carousel-wrapper" data-mdb-ripple-color="light">
+  <% carousel_indicator_id = dom_id(post, 'carouselIndicator') %>
+  <div id="<%= carousel_indicator_id %>" class="carousel slide" data-mdb-ride="carousel" data-mdb-interval="false">
+    <div class="carousel-indicators">
+      <% post.images.size.times do |n| %>
+        <button
+          type="button"
+          data-mdb-target="#<%= carousel_indicator_id %>"
+          data-mdb-slide-to="<%= n.to_s %>"
+          class="<%= 'active' if n.zero? %>"></button>
+      <% end %>
+    </div>
+    <div class="carousel-inner">
+      <% post.images.each_with_index do |image, index| %>
+        <div class="carousel-item <%= 'active' if index.zero? %>">
+          <%= image_tag image, class: 'd-block w-100' %>
+        </div>
+      <% end %>
+    </div>
+    <% if post.images.size > 1 %>
+      <button class="carousel-control-prev" type="button" data-mdb-target="#<%= carousel_indicator_id %>" data-mdb-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-mdb-target="#<%= carousel_indicator_id %>" data-mdb-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    <% end %>
+  </div>
+  <%= link_to post_path(post) do %>
+    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+  <% end %>
+</div>

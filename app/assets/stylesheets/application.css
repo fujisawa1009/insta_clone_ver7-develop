@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+.post-item {
+    max-width: 400px;
+}
+
+.post-carousel-wrapper .carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
