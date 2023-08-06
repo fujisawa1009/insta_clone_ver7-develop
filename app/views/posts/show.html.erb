@@ -14,30 +14,32 @@
             <span class="font-weight-bold"><%= @post.user.username %></span>
           </div>
           <!-- Menu -->
-          <div class="dropdown text-center">
-            <a
-              class="text-reset me-3 dropdown-toggle hidden-arrow w-100 d-block"
-              href="#"
-              id="postDropdownMenuLink"
-              role="button"
-              data-mdb-toggle="dropdown"
-              aria-expanded="false">
-              <i class="fas fa-ellipsis-v"></i>
-            </a>
-            <ul
-              class="dropdown-menu dropdown-menu-end"
-              aria-labelledby="postDropdownMenuLink">
-              <li>
-                <%= link_to '編集', edit_post_path(@post), class: 'dropdown-item' %>
-              </li>
-              <li>
-                <%= link_to '削除',
-                            post_path(@post),
-                            class: 'dropdown-item text-danger',
-                            data: { turbo_method: :delete, turbo_confirm: '削除します' } %>
-              </li>
-            </ul>
-          </div>
+          <% if current_user && current_user.owner?(@post) %>
+            <div class="dropdown text-center">
+              <a
+                class="text-reset me-3 dropdown-toggle hidden-arrow w-100 d-block"
+                href="#"
+                id="postDropdownMenuLink"
+                role="button"
+                data-mdb-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fas fa-ellipsis-v"></i>
+              </a>
+              <ul
+                class="dropdown-menu dropdown-menu-end"
+                aria-labelledby="postDropdownMenuLink">
+                <li>
+                  <%= link_to '編集', edit_post_path(@post), class: 'dropdown-item' %>
+                </li>
+                <li>
+                  <%= link_to '削除',
+                              post_path(@post),
+                              class: 'dropdown-item text-danger',
+                              data: { turbo_method: :delete, turbo_confirm: '削除します' } %>
+                </li>
+              </ul>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="card-body">
