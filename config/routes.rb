@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get '/health_check', to: 'health_checks#show'
-  root to: 'samples#index'
+  root to: 'posts#index'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   get '/login', to: 'user_sessions#new'
