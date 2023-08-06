@@ -19,6 +19,8 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many_attached :images
+  has_many :comments, dependent: :destroy
+
   validates :body, presence: true
   #画像ファイルのみ, 5MBまで
   validates :images, presence: true,
