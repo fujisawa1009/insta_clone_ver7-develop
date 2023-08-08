@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-xl-5 col-md-8">
-        <%= form_with url: login_path, class: 'bg-white  rounded-5 shadow-5-strong p-5' do |f| %>
+        <%= form_with url: login_path, class: 'bg-white  rounded-5 shadow-5-strong p-5', id: 'login-form' do |f| %>
           <div class="form-outline mb-4">
             <%= f.email_field :email, class: 'form-control' %>
             <%= f.label :email, User.human_attribute_name(:email), class: 'form-label' %>
