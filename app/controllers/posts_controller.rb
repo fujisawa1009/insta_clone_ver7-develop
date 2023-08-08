@@ -1,12 +1,22 @@
 class PostsController < ApplicationController
-  #未ログイン時は新規投稿や編集ができないような制御
+  # 未ログイン時は新規投稿や編集ができないような制御
   before_action :require_login, only: %i[new create edit update destroy]
   def index
     @pagy, @posts = pagy(Post.with_attached_images.includes(:user).order(created_at: :desc))
   end
 
+  def show
+    @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = Comment.new
+  end
+
   def new
     @post = Post.new
+  end
+
+  def edit
+    @post = current_user.posts.find(params[:id])
   end
 
   def create
@@ -18,10 +28,6 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit
-    @post = current_user.posts.find(params[:id])
-  end
-
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
@@ -29,12 +35,6 @@ class PostsController < ApplicationController
     else
       render :edit, status: :unprocessable_entity
     end
-  end
-
-  def show
-    @post = Post.find(params[:id])
-    @comments = @post.comments
-    @comment = Comment.new
   end
 
   def destroy
