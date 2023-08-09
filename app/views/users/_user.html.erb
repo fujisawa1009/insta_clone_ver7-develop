@@ -8,5 +8,7 @@
       loading="lazy">
     <%= user.username %>
   </div>
-  <%= link_to 'フォロー', '', class: 'btn btn-primary' %>
+  <% if logged_in? %>
+    <%= render 'users/relationships/follows', user: %>
+  <% end %>
 </div>
