@@ -22,7 +22,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :body, presence: true
-  #画像ファイルのみ, 5MBまで
+  # 画像ファイルのみ, 5MBまで
   validates :images, presence: true,
-            blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..(5.megabytes) }
+                     blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..(5.megabytes) }
 end

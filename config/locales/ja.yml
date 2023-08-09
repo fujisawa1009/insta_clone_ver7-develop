@@ -1,4 +1,6 @@
 ja:
+  flash:
+    login_failure: ログインに失敗しました
   activerecord:
     models:
       user: 'ユーザー'
