@@ -3,7 +3,6 @@ class PostsController < ApplicationController
   before_action :require_login, only: %i[new create edit update destroy]
   def index
     @pagy, @posts = pagy(Post.with_attached_images.includes(:user).order(created_at: :desc))
-    @users = User.all
   end
 
   def show

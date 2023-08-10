@@ -10,7 +10,7 @@
           ユーザー
         </div>
         <div class="card-body">
-          <%= render @users %>
+          <%= render User.recent(5) %>
         </div>
       </div>
     </div>
