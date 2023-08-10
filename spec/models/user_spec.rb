@@ -100,5 +100,22 @@ RSpec.describe User, type: :model do
       expect(User.recent(3)).to eq [user_a, user_b, user_c]
     end
   end
+
+  describe '#feed' do
+    let!(:user_a) { create(:user) }
+    let!(:user_b) { create(:user) }
+    let!(:user_c) { create(:user) }
+    let!(:post_by_user_a) { create(:post, user: user_a) }
+    let!(:post_by_user_b) { create(:post, user: user_b) }
+    let!(:post_by_user_c) { create(:post, user: user_c) }
+    before do
+      user_a.follow(user_b)
+    end
+    subject { user_a.feed }
+    # 自分の投稿と自分がフォローしている人の投稿のみが返される
+    it { is_expected.to include post_by_user_a }
+    it { is_expected.to include post_by_user_b }
+    it { is_expected.not_to include post_by_user_c }
+  end
 end
 
