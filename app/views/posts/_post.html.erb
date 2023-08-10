@@ -1,4 +1,4 @@
-<div id="<%= dom_id(post) %>" class="card mb-5 post-item">
+<div id="<%= dom_id(post) %>" class="card mb-5 post-item mx-auto">
   <%= render 'carousel_images', post: %>
   <div class="card-body">
     <p class="card-text"><%= post.body.truncate(50) %></p>
