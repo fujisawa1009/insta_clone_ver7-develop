@@ -22,3 +22,7 @@
     height: 400px;
     object-fit: cover;
 }
+
+.pagination {
+    justify-content: center;
+}

@@ -1,8 +1,14 @@
 class PostsController < ApplicationController
   # 未ログイン時は新規投稿や編集ができないような制御
   before_action :require_login, only: %i[new create edit update destroy]
+
   def index
-    @pagy, @posts = pagy(Post.with_attached_images.includes(:user).order(created_at: :desc))
+    # ログイン時はフォローしている人の投稿と自分の投稿だけ表示させる
+    @pagy, @posts = if logged_in?
+                      pagy(current_user.feed.with_attached_images.includes(:user).order(created_at: :desc))
+                    else
+                      pagy(Post.with_attached_images.includes(:user).order(created_at: :desc))
+                    end
   end
 
   def show

@@ -1,8 +1,23 @@
 <div class="container pt-5">
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 col-lg-8">
       <%= render @posts %>
       <%== pagy_bootstrap_nav(@pagy) %>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          ユーザー
+        </div>
+        <div class="card-body">
+          <%= render User.recent(5) %>
+        </div>
+        <div class="card-footer text-center">
+          <% if User.count > 5 %>
+            <%= link_to 'もっと見る', users_path, class: 'btn btn-link' %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
