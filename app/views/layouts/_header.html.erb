@@ -35,6 +35,16 @@
           <%= link_to 'サインアップ', signup_path, class: 'btn btn-primary me-3' %>
         <% end %>
 
+        <a
+          href="#"
+          id="search-icon"
+          class="input-group-text border-0"
+          data-mdb-toggle="modal"
+          data-mdb-target="#searchModal"
+          data-mdb-whatever="@mdo">
+          <i class="fas fa-search"></i>
+        </a>
+        <%= render 'shared/search_modal', q: @q %>
         <% if logged_in? %>
           <%= link_to new_post_path, class: 'btn btn-primary btn-sm me-3' do %>
             <i class="fas fa-camera me-2"></i>

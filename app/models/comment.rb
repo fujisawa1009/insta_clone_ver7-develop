@@ -24,4 +24,9 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   validates :body, presence: true, length: { maximum: 1000 }
+
+  # ransackの4系からモデルに許可リストが必要
+  def self.ransackable_attributes(_auth_object = nil)
+    ['body']
+  end
 end

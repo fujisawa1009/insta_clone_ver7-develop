@@ -25,4 +25,13 @@ class Post < ApplicationRecord
   # 画像ファイルのみ, 5MBまで
   validates :images, presence: true,
                      blob: { content_type: ['image/png', 'image/jpg', 'image/jpeg'], size_range: 1..(5.megabytes) }
+
+  # ransackの4系からモデルに許可リストが必要
+  def self.ransackable_attributes(_auth_object = nil)
+    ['body']
+  end
+
+  def self.ransackable_associations(_auth_object = nil)
+    %w[comments user]
+  end
 end
