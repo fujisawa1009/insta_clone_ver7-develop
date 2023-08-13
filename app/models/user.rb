@@ -72,4 +72,8 @@ class User < ApplicationRecord
   def feed
     Post.where(user_id: following_ids << id)
   end
+
+  def self.ransackable_attributes(_auth_object = nil)
+    ['username']
+  end
 end
