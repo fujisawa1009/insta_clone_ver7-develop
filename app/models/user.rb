@@ -73,6 +73,7 @@ class User < ApplicationRecord
     Post.where(user_id: following_ids << id)
   end
 
+  # ransackの4系からモデルに許可リストが必要
   def self.ransackable_attributes(_auth_object = nil)
     ['username']
   end
