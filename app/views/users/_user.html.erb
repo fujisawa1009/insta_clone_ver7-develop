@@ -6,7 +6,7 @@
       height="48"
       alt="Black and White Portrait of a Man"
       loading="lazy">
-    <%= user.username %>
+    <%= link_to user.username, user_path(user) %>
   </div>
   <% if logged_in? %>
     <%= render 'users/relationships/follows', user: %>
