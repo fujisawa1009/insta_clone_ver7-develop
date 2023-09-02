@@ -3,6 +3,10 @@ class UsersController < ApplicationController
     @pagy, @users = pagy(User.order(created_at: :desc))
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def new
     @user = User.new
   end

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resource :like, only: %i[create destroy], module: :posts
   end
 
-  resources :users, only: %i[index] do
+  resources :users, only: %i[index show] do
     resource :relationship, only: %i[create destroy], module: :users
   end
 end

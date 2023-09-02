@@ -1,0 +1,16 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div class="card">
+        <div class="card-header">
+          <%= render @user %>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <%= render partial: 'posts/thumbnail_post', collection: @user.posts, as: :post %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
