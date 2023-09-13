@@ -1,9 +1,7 @@
 <%= turbo_frame_tag dom_id comment do %>
   <div class="d-flex gap-3">
-    <%= image_tag 'http://placehold.jp/40x40.png',
-                  class: 'rounded-circle',
-                  width: 40,
-                  height: 40 %>
+    <%= image_tag comment.user.decorate.avatar_url(:thumb),
+                  class: 'rounded-circle', alt: comment.user.username, height: '40' %>
     <div class="w-100">
       <span class="font-weight-bold"><%= comment.user.username %></span>
       <%= simple_format(comment.body) %>
