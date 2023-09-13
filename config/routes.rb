@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :mypage do
+    root to: 'accounts#edit'
     resource :account, only: %i[edit update]
   end
 end
