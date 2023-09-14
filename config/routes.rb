@@ -14,4 +14,9 @@ Rails.application.routes.draw do
   resources :users, only: %i[index show] do
     resource :relationship, only: %i[create destroy], module: :users
   end
+
+  namespace :mypage do
+    root to: 'accounts#edit'
+    resource :account, only: %i[edit update]
+  end
 end

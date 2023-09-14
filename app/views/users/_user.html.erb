@@ -1,11 +1,7 @@
 <div class="d-flex align-items-center justify-content-between gap-3 border-bottom mb-1 p-2">
   <div class="d-flex align-items-center gap-3">
-    <img
-      src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-      class="rounded-circle"
-      height="48"
-      alt="Black and White Portrait of a Man"
-      loading="lazy">
+    <%= image_tag user.decorate.avatar_url(:thumb),
+                  class: 'rounded-circle', alt: user.username, height: '48', loading: 'lazy' %>
     <%= link_to user.username, user_path(user) %>
   </div>
   <% if logged_in? %>

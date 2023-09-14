@@ -7,10 +7,8 @@
       <div class="card-header">
         <div class="d-flex justify-content-between align-items-center">
           <div class="d-flex align-items-center gap-3">
-            <%= image_tag 'http://placehold.jp/40x40.png',
-                          class: 'rounded-circle',
-                          width: 40,
-                          height: 40 %>
+            <%= image_tag @post.user.decorate.avatar_url(:thumb),
+                          class: 'rounded-circle', alt: @post.user.username, height: '40' %>
             <span class="font-weight-bold"><%= @post.user.username %></span>
           </div>
           <!-- Menu -->
@@ -44,10 +42,8 @@
       </div>
       <div class="card-body" style="max-height: 400px; overflow-y: scroll">
         <div class="d-flex gap-3">
-          <%= image_tag 'http://placehold.jp/40x40.png',
-                        class: 'rounded-circle',
-                        width: 40,
-                        height: 40 %>
+          <%= image_tag @post.user.decorate.avatar_url(:thumb),
+                        class: 'rounded-circle', alt: @post.user.username, height: '40' %>
           <div class="w-100">
             <span class="font-weight-bold"><%= @post.user.username %></span>
             <%= simple_format(@post.body) %>

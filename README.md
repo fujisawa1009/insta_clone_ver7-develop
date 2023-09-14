@@ -29,7 +29,8 @@ rspec --initを実行すると自動的に以下ファイルが生成
 spec/rails_helper.rb
 spec/spec_helper.rb
 実行時は
-docker compose exec web bash
+docker compose exec web bashしてから
+
 rspec
 
 # rubocopメモ

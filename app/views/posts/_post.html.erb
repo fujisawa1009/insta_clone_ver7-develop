@@ -14,10 +14,8 @@
   <div class="card-footer">
 
     <div class="d-flex align-items-center gap-3">
-      <%= image_tag 'http://placehold.jp/40x40.png',
-                    class: 'rounded-circle',
-                    width: 40,
-                    height: 40 %>
+      <%= image_tag post.user.decorate.avatar_url(:thumb),
+                    class: 'rounded-circle', alt: post.user.username, height: '48' %>
       <span><%= post.user.username %></span>
     </div>
   </div>

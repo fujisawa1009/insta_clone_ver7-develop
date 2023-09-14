@@ -59,21 +59,14 @@
               role="button"
               data-mdb-toggle="dropdown"
               aria-expanded="false">
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
-                class="rounded-circle"
-                height="25"
-                alt="Black and White Portrait of a Man"
-                loading="lazy">
+              <%= image_tag current_user.decorate.avatar_url(:thumb),
+                            class: 'rounded-circle', alt: current_user.username, height: '32' %>
             </a>
             <ul
               class="dropdown-menu dropdown-menu-end"
               aria-labelledby="navbarDropdownMenuAvatar">
               <li>
-                <a class="dropdown-item" href="#">My profile</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="#">Settings</a>
+                <%= link_to 'プロフィール', edit_mypage_account_path, class: 'dropdown-item' %>
               </li>
               <li>
                 <%= link_to 'ログアウト',
