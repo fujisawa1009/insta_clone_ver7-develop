@@ -10,7 +10,7 @@
           ユーザー
         </div>
         <div class="card-body">
-          <%= render User.recent(5) %>
+          <%= render User.with_attached_avatar.recent(5) %>
         </div>
         <div class="card-footer text-center">
           <% if User.count > 5 %>
