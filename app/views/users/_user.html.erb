@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center justify-content-between gap-3 border-bottom mb-1 p-2">
   <div class="d-flex align-items-center gap-3">
     <%= image_tag user.decorate.avatar_url(:thumb),
-                  class: 'rounded-circle', alt: current_user.username, height: '48', loading: 'lazy' %>
+                  class: 'rounded-circle', alt: user.username, height: '48', loading: 'lazy' %>
     <%= link_to user.username, user_path(user) %>
   </div>
   <% if logged_in? %>
