@@ -6,10 +6,10 @@
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownNotifications" data-popper-placement="null" data-mdb-popper="none">
     <% notifications.each do |notification| %>
       <li>
-        <a class="dropdown-item" href="#">
+        <%= link_to notification.url, class: 'dropdown-item' do %>
           <div class="text-muted small"><%= l notification.created_at, format: :long %></div>
           <%= notification.title %>
-        </a>
+        <% end %>
       </li>
     <% end %>
     <% if notifications.size > 10 %>
