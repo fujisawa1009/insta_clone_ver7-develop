@@ -1,7 +1,10 @@
 <div class="dropdown">
   <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownNotifications" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
     <i class="fas fa-bell"></i>
-    <span class="badge rounded-pill badge-notification bg-danger">1</span>
+    <% unread_notification_size = user_notifications.where(read: false).size %>
+    <% if unread_notification_size > 0 %>
+      <span class="badge rounded-pill badge-notification bg-danger"><%= unread_notification_size %></span>
+    <% end %>
   </a>
   <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownNotifications" data-popper-placement="null" data-mdb-popper="none">
     <% user_notifications.each do |user_notification| %>
