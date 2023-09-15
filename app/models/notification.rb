@@ -23,4 +23,3 @@ class Notification < ApplicationRecord
     UserNotification.insert_all(user_notifications) # rubocop:disable Rails/SkipsModelValidations
   end
 end
-

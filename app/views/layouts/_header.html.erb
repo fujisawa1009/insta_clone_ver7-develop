@@ -50,7 +50,7 @@
             <i class="fas fa-camera me-2"></i>
             投稿
           <% end %>
-          <%= render 'shared/notifications' %>
+          <%= render 'shared/notifications', notifications: Notification.all %>
           <!-- Avatar -->
           <div id="header-avatar-dropdown" class="dropdown">
             <a
