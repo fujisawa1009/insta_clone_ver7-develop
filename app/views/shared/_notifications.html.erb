@@ -14,7 +14,7 @@
     <% end %>
     <% if user_notifications.size > 10 %>
       <li class="border-top">
-        <a href="#" class="d-block mx-auto text-center py-2">もっとみる</a>
+        <%= link_to 'もっとみる', mypage_notifications_path, class: 'd-block mx-auto text-center py-2' %>
       </li>
     <% end %>
   </ul>

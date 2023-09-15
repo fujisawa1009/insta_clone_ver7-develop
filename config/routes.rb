@@ -22,5 +22,6 @@ Rails.application.routes.draw do
   namespace :mypage do
     root to: 'accounts#edit'
     resource :account, only: %i[edit update]
+    resources :notifications, only: %i[index]
   end
 end
