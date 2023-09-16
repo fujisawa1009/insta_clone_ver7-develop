@@ -33,6 +33,6 @@ class Posts::CommentsController < ApplicationController
 
   def create_notifications_about_comment_to_own_post(comment)
     notification = Notification.create!(title: 'あなたの投稿にコメントがありました', url: post_url(comment.post))
-    notification.notify(User.all) # TODO
+    notification.notify(comment.post.user)
   end
 end
