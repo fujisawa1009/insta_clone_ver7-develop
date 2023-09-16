@@ -1,0 +1,24 @@
+<div class="dropdown">
+  <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownNotifications" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+    <i class="fas fa-bell"></i>
+    <% unread_notification_size = user_notifications.where(read: false).size %>
+    <% if unread_notification_size > 0 %>
+      <span class="badge rounded-pill badge-notification bg-danger"><%= unread_notification_size %></span>
+    <% end %>
+  </a>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownNotifications" data-popper-placement="null" data-mdb-popper="none">
+    <% user_notifications.each do |user_notification| %>
+      <li class="<%= 'read' if user_notification.read? %>">
+        <%= link_to notification_read_path(user_notification.notification), class: 'dropdown-item', data: { turbo_method: :post } do %>
+          <div class="text-muted small"><%= l user_notification.created_at, format: :long %></div>
+          <%= user_notification.notification_title %>
+        <% end %>
+      </li>
+    <% end %>
+    <% if user_notifications.size > 10 %>
+      <li class="border-top">
+        <%= link_to 'もっとみる', mypage_notifications_path, class: 'd-block mx-auto text-center py-2' %>
+      </li>
+    <% end %>
+  </ul>
+</div>

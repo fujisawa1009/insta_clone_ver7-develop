@@ -50,6 +50,8 @@
             <i class="fas fa-camera me-2"></i>
             投稿
           <% end %>
+          <!--自分に対する通知を10件までだけ新しい順で表示-->
+          <%= render 'shared/notifications', user_notifications: current_user.user_notifications.includes(:notification).order(created_at: :desc).limit(11) %>
           <!-- Avatar -->
           <div id="header-avatar-dropdown" class="dropdown">
             <a

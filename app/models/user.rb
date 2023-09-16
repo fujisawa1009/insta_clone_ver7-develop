@@ -32,6 +32,8 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :user_notifications, dependent: :destroy
+  has_many :notifications, through: :user_notifications
   has_one_attached :avatar
 
   validates :username, uniqueness: true, presence: true
@@ -49,6 +51,8 @@ class User < ApplicationRecord
 
   def like(post)
     like_posts << post
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 
   def unlike(post)
@@ -61,6 +65,8 @@ class User < ApplicationRecord
 
   def follow(other_user)
     following << other_user
+  rescue ActiveRecord::RecordInvalid
+    false
   end
 
   def unfollow(other_user)

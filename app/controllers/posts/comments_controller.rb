@@ -11,7 +11,9 @@ class Posts::CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
-    @comment.save
+    return unless @comment.save
+
+    create_notifications_about_comment_to_own_post(@comment)
   end
 
   def update
@@ -28,5 +30,10 @@ class Posts::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body).merge(post_id: params[:post_id])
+  end
+
+  def create_notifications_about_comment_to_own_post(comment)
+    notification = Notification.create!(title: 'あなたの投稿にコメントがありました', url: post_url(comment.post))
+    notification.notify(comment.post.user)
   end
 end

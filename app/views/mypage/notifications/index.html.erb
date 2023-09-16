@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <ul class="list-unstyled">
+        <% @user_notifications.each do |user_notification| %>
+          <li class="<%= 'read' if user_notification.read? %>">
+            <%= link_to notification_read_path(user_notification.notification), class: 'dropdown-item', data: { turbo_method: :post } do %>
+              <div class="text-muted small"><%= l user_notification.created_at, format: :long %></div>
+              <%= user_notification.notification_title %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
