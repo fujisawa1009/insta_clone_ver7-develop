@@ -3,9 +3,9 @@ class Users::RelationshipsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    if current_user.follow(@user)
-      create_notifications_about_follow(@user)
-    end
+    return unless current_user.follow(@user)
+
+    create_notifications_about_follow(@user)
   end
 
   def destroy
