@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-
   def like_post
     @user_from = params[:user_from]
     @user_to = params[:user_to]

@@ -1,22 +1,23 @@
 class Posts::CommentsController < ApplicationController
   before_action :require_login
 
-  def create
-    @comment = current_user.comments.build(comment_params)
-    # rubocop:disable Style/IfUnlessModifier, Style/GuardClause
-    if @comment.save
-      create_notifications_about_comment_to_own_post(@comment)
-      UserMailer.with(user_from: current_user, user_to: @comment.post.user, comment: @comment).comment_post.deliver_later
-    end
-    # rubocop:enable Style/IfUnlessModifier, Style/GuardClause
-  end
-
   def show
     @comment = current_user.comments.find(params[:id])
   end
 
   def edit
     @comment = current_user.comments.find(params[:id])
+  end
+
+  def create
+    @comment = current_user.comments.build(comment_params)
+    # rubocop:disable Style/GuardClause
+    if @comment.save
+      create_notifications_about_comment_to_own_post(@comment)
+      UserMailer.with(user_from: current_user, user_to: @comment.post.user,
+                      comment: @comment).comment_post.deliver_later
+    end
+    # rubocop:enable Style/GuardClause
   end
 
   def update
