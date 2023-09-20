@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  # メールの送信元となるメールアドレスを指定
+  default from: 'instaclone@example.com'
   layout 'mailer'
 end
