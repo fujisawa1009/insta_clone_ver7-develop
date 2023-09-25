@@ -72,6 +72,9 @@ gem 'letter_opener_web'
 # 定数管理
 gem 'config'
 
+# ワーカー
+gem 'sidekiq'
+
 group :development, :test do
   gem 'annotate'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

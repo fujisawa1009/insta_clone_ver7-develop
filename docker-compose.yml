@@ -15,7 +15,7 @@ services:
       - sidekiq
     environment:
       SELENIUM_DRIVER_URL: http://chrome:4444/wd/hub
-        REDIS_URL: redis://redis:6379
+      REDIS_URL: redis://redis:6379
     stdin_open: true
     tty: true
   db:
