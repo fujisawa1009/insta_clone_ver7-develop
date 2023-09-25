@@ -3,9 +3,13 @@ class Users::RelationshipsController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    return unless current_user.follow(@user)
-
-    create_notifications_about_follow(@user)
+    # rubocop:disable Style/GuardClause
+    # むしろわかりづらくなると思ったのでdisable
+    if current_user.follow(@user)
+      create_notifications_about_follow(@user)
+      UserMailer.with(user_from: current_user, user_to: @user).follow.deliver_later
+    end
+    # rubocop:enable Style/GuardClause
   end
 
   def destroy

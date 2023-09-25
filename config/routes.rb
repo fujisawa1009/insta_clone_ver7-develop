@@ -24,4 +24,8 @@ Rails.application.routes.draw do
     resource :account, only: %i[edit update]
     resources :notifications, only: %i[index]
   end
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
+  end
 end
