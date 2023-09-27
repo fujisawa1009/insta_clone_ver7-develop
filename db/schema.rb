@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_14_092535) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_27_102736) do
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -57,6 +57,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_092535) do
     t.index ["post_id", "user_id"], name: "index_likes_on_post_id_and_user_id", unique: true
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "notification_timings", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "timing_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["timing_type"], name: "index_notification_timings_on_timing_type", unique: true
   end
 
   create_table "notifications", charset: "utf8mb4", force: :cascade do |t|
