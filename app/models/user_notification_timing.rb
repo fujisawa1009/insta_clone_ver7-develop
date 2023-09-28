@@ -22,4 +22,7 @@
 class UserNotificationTiming < ApplicationRecord
   belongs_to :user
   belongs_to :notification_timing
+
+  # user_notification_timingが重複して作成されないようなバリデーション
+  validates :user_id, uniqueness: { scope: :notification_timing_id }
 end
