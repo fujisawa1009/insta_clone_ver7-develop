@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_102736) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_28_091212) do
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -91,6 +91,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_102736) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
+  create_table "user_notification_timings", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "notification_timing_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_timing_id"], name: "index_user_notification_timings_on_notification_timing_id"
+    t.index ["user_id", "notification_timing_id"], name: "idx_user_n_timings_on_user_id_and_n_timing_id", unique: true
+    t.index ["user_id"], name: "index_user_notification_timings_on_user_id"
+  end
+
   create_table "user_notifications", charset: "utf8mb4", force: :cascade do |t|
     t.bigint "notification_id", null: false
     t.bigint "user_id", null: false
@@ -122,6 +132,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_102736) do
   add_foreign_key "posts", "users"
   add_foreign_key "relationships", "users", column: "followed_id"
   add_foreign_key "relationships", "users", column: "follower_id"
+  add_foreign_key "user_notification_timings", "notification_timings"
+  add_foreign_key "user_notification_timings", "users"
   add_foreign_key "user_notifications", "notifications"
   add_foreign_key "user_notifications", "users"
 end
