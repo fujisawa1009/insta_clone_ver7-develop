@@ -53,6 +53,7 @@ gem 'sorcery'
 
 # 国際化
 gem 'rails-i18n'
+gem 'enum_help'
 
 # ActiveStorage
 gem 'activestorage-validator'
