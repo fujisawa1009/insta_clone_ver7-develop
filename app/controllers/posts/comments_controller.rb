@@ -15,11 +15,10 @@ class Posts::CommentsController < ApplicationController
     if @comment.save
       create_notifications_about_comment_to_own_post(@comment)
       # メール通知を許可している場合のみ通知する
-      UserMailer.with(
-        user_from: current_user,
-        user_to: @comment.post.user,
-        comment: @comment
-      ).comment_post.deliver_later if @comment.post.user.accepted_notification?(:on_commented)
+      if @comment.post.user.accepted_notification?(:on_commented)
+        UserMailer.with(user_from: current_user, user_to: @comment.post.user,
+                        comment: @comment).comment_post.deliver_later
+      end
     end
     # rubocop:enable Style/GuardClause
   end

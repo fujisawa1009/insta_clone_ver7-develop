@@ -52,8 +52,8 @@ gem 'image_processing', '~> 1.2'
 gem 'sorcery'
 
 # 国際化
-gem 'rails-i18n'
 gem 'enum_help'
+gem 'rails-i18n'
 
 # ActiveStorage
 gem 'activestorage-validator'
