@@ -1,3 +1,5 @@
+<% set_meta_tags title: '投稿詳細ページ', description: @post.body,
+                 og: { image: rails_storage_proxy_url(@post.images.first) } %>
 <div class="container card mt-3 p-0">
   <div class="row g-0">
     <div class="col-8">
