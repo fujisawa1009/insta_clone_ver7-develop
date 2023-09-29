@@ -7,7 +7,10 @@ class Users::RelationshipsController < ApplicationController
     # むしろわかりづらくなると思ったのでdisable
     if current_user.follow(@user)
       create_notifications_about_follow(@user)
-      UserMailer.with(user_from: current_user, user_to: @user).follow.deliver_later
+      if @user.accepted_notification?(:on_followed)
+        UserMailer.with(user_from: current_user,
+                        user_to: @user).follow.deliver_later
+      end
     end
     # rubocop:enable Style/GuardClause
   end

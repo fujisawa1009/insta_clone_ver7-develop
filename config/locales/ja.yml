@@ -17,7 +17,16 @@ ja:
         images: '画像'
       comment:
         body: 'コメント'
+      notification_timing:
+        timing_type: '通知タイミング'
 
   attributes:
     created_at: '作成日時'
     updated_at: '更新日時'
+
+  enums:
+    notification_timing:
+      timing_type:
+        on_commented: '投稿にコメントがあった時'
+        on_liked: '投稿にいいねがあった時'
+        on_followed: 'フォローされた時'

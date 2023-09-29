@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     root to: 'accounts#edit'
     resource :account, only: %i[edit update]
     resources :notifications, only: %i[index]
+    resource :notification_setting, only: %i[edit update]
   end
 
   if Rails.env.development?

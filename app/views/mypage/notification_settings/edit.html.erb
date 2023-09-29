@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= form_with model: @user, url: mypage_notification_setting_path do |f| %>
+        <%= f.collection_check_boxes :notification_timing_ids, NotificationTiming.all, :id, :timing_type_i18n do |b| %>
+          <div class="mb-3">
+            <%= b.label class: 'd-flex align-items-center gap-1' do %>
+              <%= b.check_box %>
+              <%= b.text %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="text-center">
+          <%= f.submit class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

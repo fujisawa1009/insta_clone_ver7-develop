@@ -1,2 +1,1 @@
-require './db/seeds/users'
-require './db/seeds/posts'
+require "./db/seeds/environment/#{Rails.env.downcase}.rb"
