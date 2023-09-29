@@ -6,7 +6,12 @@ class Posts::LikesController < ApplicationController
     # rubocop:disable Style/GuardClause
     if current_user.like(@post)
       create_notifications_about_like(@post)
-      UserMailer.with(user_from: current_user, user_to: @post.user, post: @post).like_post.deliver_later
+      # メール通知を許可している場合のみ通知する
+      UserMailer.with(
+        user_from: current_user,
+        user_to: @post.user,
+        post: @post
+      ).like_post.deliver_later if @post.user.accepted_notification?(:on_liked)
     end
     # rubocop:enable Style/GuardClause
   end

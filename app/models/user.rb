@@ -87,4 +87,10 @@ class User < ApplicationRecord
   def self.ransackable_attributes(_auth_object = nil)
     ['username']
   end
+
+  def accepted_notification?(type)
+    notification_timings.find_by(timing_type: type).present?
+    # こちらでも良い
+    # user_notification_timings.joins(:notification_timing).find_by(notification_timing: { timing_type: type }).present?
+  end
 end
