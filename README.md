@@ -60,10 +60,13 @@ docker compose exec web bash
 bin/rails g model post
 
 マイグレーションファイルを書き換える
-
-docker compose exec web bash
-
 bin/rails db:migrate
 
 もしくは
 docker-compose run web bundle exec rake db:migrate
+
+■scaffoldingで一括作成時
+bin/rails g scaffold question name:string title:string content:text 
+bin/rails db:migrate
+
+
