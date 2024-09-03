@@ -49,8 +49,12 @@ gemインストール
 
 docker-compose  run --rm web bundle
 
-■モデル作成手順
+■コントローラ作成
+docker compose exec web bash
 
+bin/rails g controller users index
+
+■モデル作成手順
 docker compose exec web bash
 
 bin/rails g model post
